@@ -1,0 +1,11 @@
+echo -n 'elastic:Rw114477' | base64
+
+
+
+curl -X POST "http://localhost:9200/_security/api_key" `
+-H "Content-Type: application/json" `
+-H "Authorization: Basic ZWxhc3RpYzpSdzExNDQ3Nw==" `
+-d '{ "name": "kibana_service_account", "role_descriptors": { "kibana_system": { "cluster": ["all"], "index": [{ "names": ["*"], "privileges": ["all"] }] } } }'
+
+
+>curl -X GET "http://localhost:9200/_security/_authenticate" ^                                                                                                                             More? -H "Authorization: ApiKey alRFbHJaRUI0cFZpa0w1ZGVORGs6LVN5M29teWRTM3FrdjZUY0pES1VfZw=="                                                                                                                      {"username":"elastic","roles":[],"full_name":null,"email":null,"metadata":{"_reserved":true},"enabled":true,"authentication_realm":{"name":"_es_api_key","type":"_es_api_key"},"lookup_realm":{"name":"_es_api_key","type":"_es_api_key"},"authentication_type":"api_key","api_key":{"id":"jTElrZEB4pVikL5deNDk","name":"kibana_service_account"}}          
